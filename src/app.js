@@ -1,8 +1,9 @@
 const Koa = require('koa');
-const app = new Koa();
 const path = require('path');
 const dotenv = require('dotenv');
+
 dotenv.config({ path: path.resolve(__dirname, '../env/.env') });
+const app = new Koa();
 const port = process.env.PORT || 3004;
 
 app.use(async (ctx, next) => {
