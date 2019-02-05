@@ -5,14 +5,16 @@ const dotenv = require('dotenv');
 dotenv.config({ path: path.resolve(__dirname, '../env/.env') });
 const port = process.env.PORT || 3004;
 
-app.use((ctx, next) => {
+app.use(async (ctx, next) => {
     ctx.body = 'hello world';
     console.log(1);
-    next();
+    await next();
+    console.log(3);
 });
 
-app.use(ctx => {
+app.use((ctx, next) => {
     console.log(2);
+    next();
 });
 
 app.listen(port, () => {
